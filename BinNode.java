@@ -9,12 +9,14 @@ public class BinNode {
     private BinNode left;
     private BinNode right;
     private BinNode parent;
+    private int height = 1;
 
     public BinNode() {
         data = "";
         left = null;
         right = null;
         parent = null;
+        height = 1;
     }
 
     public BinNode(String d) {
@@ -22,6 +24,7 @@ public class BinNode {
         left = null;
         right = null;
         parent = null;
+        height = 1;
     }
 
     public void setData(String d) {
@@ -46,6 +49,14 @@ public class BinNode {
 
     public void setRight(BinNode r) {
         this.right = r;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int getHeight() {
+        return this.height;
     }
 
     public BinNode getRight() {

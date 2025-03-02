@@ -41,6 +41,7 @@ public class BinaryTree {
           } else {
                node.setRight(insert(node.getRight(), data, node));
           }
+          updateHeight(node);
           return node;
      }
 
@@ -147,7 +148,30 @@ public class BinaryTree {
                     r.setRight(remove(r.getRight(), curr.getData()));
                }
           }
+          updateHeight(r);
           return r;
+     }
+
+     public int getHeight() {
+          if (root == null) {
+               return 0;
+          } else {
+               return root.getHeight();
+          }
+     }
+
+     private void updateHeight(BinNode node) {
+          if (node != null) {
+               int leftHeight = 0;
+               if (node.getLeft() != null) {
+                    leftHeight = node.getLeft().getHeight();
+               }
+               int rightHeight = 0;
+               if (node.getRight() != null) {
+                    rightHeight = node.getRight().getHeight();
+               }
+               node.setHeight(Math.max(leftHeight, rightHeight) + 1);
+          }
      }
 
 }
