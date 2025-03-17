@@ -5,7 +5,7 @@
  * @version (2025)
  */
 public class BinaryTree {
-     private BinNode root;
+     BinNode root;
 
      /**
       * default constructor
@@ -34,6 +34,9 @@ public class BinaryTree {
                BinNode newNode = new BinNode();
                newNode.setData(data);
                newNode.setParent(parent);
+               if (parent != null) {
+                    newNode.setIsLeftChild(parent.getData().compareTo(data) > 0);
+               }
                return newNode;
           }
           if (node.getData().compareTo(data) > 0) {
@@ -132,11 +135,17 @@ public class BinaryTree {
                if (r.getLeft() == null) {
                     if (r.getRight() != null) {
                          r.getRight().setParent(r.getParent());
+                         if (r.getParent() != null) {
+                              r.getRight().setIsLeftChild(r.getParent().getLeft() == r);
+                         }
                     }
                     return r.getRight();
                } else if (r.getRight() == null) {
                     if (r.getLeft() != null) {
                          r.getLeft().setParent(r.getParent());
+                         if (r.getParent() != null) {
+                              r.getLeft().setIsLeftChild(r.getParent().getLeft() == r);
+                         }
                     }
                     return r.getLeft();
                } else {
@@ -160,7 +169,7 @@ public class BinaryTree {
           }
      }
 
-     private void updateHeight(BinNode node) {
+     public void updateHeight(BinNode node) {
           if (node != null) {
                int leftHeight = 0;
                if (node.getLeft() != null) {

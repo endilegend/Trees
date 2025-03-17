@@ -1,8 +1,8 @@
 /**
  * Node for a binary tree of strings.
  *
- * @author (lj)
- * @version (2023)
+ * @author (Endi Troqe)
+ * @version (2025)
  */
 public class BinNode {
     private String data;
@@ -10,6 +10,8 @@ public class BinNode {
     private BinNode right;
     private BinNode parent;
     private int height = 1;
+    private int color = 0;
+    private boolean isLeftChild;
 
     public BinNode() {
         data = "";
@@ -17,6 +19,7 @@ public class BinNode {
         right = null;
         parent = null;
         height = 1;
+        isLeftChild = false;
     }
 
     public BinNode(String d) {
@@ -25,6 +28,7 @@ public class BinNode {
         right = null;
         parent = null;
         height = 1;
+        isLeftChild = false;
     }
 
     public void setData(String d) {
@@ -41,6 +45,10 @@ public class BinNode {
 
     public void setParent(BinNode p) {
         this.parent = p;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 
     public BinNode getLeft() {
@@ -66,4 +74,17 @@ public class BinNode {
     public BinNode getParent() {
         return this.parent;
     }
+
+    public int getColor() {
+        return this.color;
+    }
+
+    public void setIsLeftChild(boolean isLeftChild) {
+        this.isLeftChild = isLeftChild;
+    }
+
+    public boolean getIsLeftChild() {
+        return this.isLeftChild;
+    }
+
 }

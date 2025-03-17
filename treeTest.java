@@ -1,15 +1,14 @@
 public class treeTest {
     public static void main(String[] args) {
-        BinaryTree tree = new BinaryTree();
+        AvlTree tree = new AvlTree();
 
         // Test insert
-        tree.insert("D");
-        tree.insert("B");
-        tree.insert("A");
-        tree.insert("C");
-        tree.insert("F");
-        tree.insert("E");
-        tree.insert("G");
+        for (int i = 1; i <= 9; i++) {
+            tree.insert(String.valueOf(i));
+            System.out.print("Inorder traversal after inserting " + i + ": ");
+            tree.inorder();
+            System.out.println();
+        }
 
         // Test inorder traversal
         System.out.print("Inorder traversal: ");
@@ -30,20 +29,17 @@ public class treeTest {
         System.out.println("Number of nodes: " + tree.countNodes());
 
         // Test search
-        System.out.println("Search for 'E': " + tree.search("E"));
-        System.out.println("Search for 'Z': " + tree.search("Z"));
+        System.out.println("Search for '10': " + tree.search("10"));
+        System.out.println("Search for '20': " + tree.search("20"));
 
         // Test remove
-        tree.remove("B");
-        System.out.print("Inorder traversal after removing 'B': ");
+        tree.remove("10");
+        System.out.print("Inorder traversal after removing '10': ");
+        tree.inorder();
+        System.out.println();
+        tree.remove("8");
+        System.out.print("Inorder traversal after removing '8': ");
         tree.inorder();
         System.out.println();
     }
 }
-// A B C D E F G
-// D B A C F E G
-// A C B E G F D
-// 7
-// true
-// false
-// A C D E F G
