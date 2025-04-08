@@ -44,6 +44,9 @@ public class rbTree extends BinaryTree {
         while (node != null && node != root && node.getParent().getColor() == RED) {
             BinNode parent = node.getParent();
             BinNode gParent = getGrandparent(node);
+            if (gParent == null) {
+                break;
+            }
 
             // If parent is a left child
             if (parent == gParent.getLeft()) {
