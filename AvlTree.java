@@ -1,5 +1,6 @@
 public class AvlTree extends BinaryTree {
 
+    // Insert Method
     @Override
     public void insert(String data) {
         root = insert(root, data, null);
@@ -21,10 +22,12 @@ public class AvlTree extends BinaryTree {
         } else {
             return node;
         }
+        // Updates height
         updateHeight(node);
         return balance(node);
     }
 
+    // Remove method
     @Override
     public void remove(String data) {
         root = remove(root, data);
@@ -63,6 +66,7 @@ public class AvlTree extends BinaryTree {
         return balance(node);
     }
 
+    // Finds the node with min value for replacement
     private BinNode minValueNode(BinNode node) {
         BinNode current = node;
         while (current.getLeft() != null) {
@@ -71,6 +75,7 @@ public class AvlTree extends BinaryTree {
         return current;
     }
 
+    // Gets balance factor
     private int getBalanceFactor(BinNode node) {
         if (node == null) {
             return 0;
@@ -80,6 +85,7 @@ public class AvlTree extends BinaryTree {
         return leftHeight - rightHeight;
     }
 
+    // Balance method
     private BinNode balance(BinNode node) {
         int balanceFactor = getBalanceFactor(node);
         if (balanceFactor > 1) {
@@ -98,6 +104,7 @@ public class AvlTree extends BinaryTree {
         return node;
     }
 
+    // Left rotation
     private BinNode rotateLeft(BinNode node) {
         BinNode newParent = node.getRight();
         node.setRight(newParent.getLeft());
@@ -119,6 +126,7 @@ public class AvlTree extends BinaryTree {
         return newParent;
     }
 
+    // Right rotation
     private BinNode rotateRight(BinNode node) {
         BinNode newParent = node.getLeft();
         node.setLeft(newParent.getRight());
@@ -140,16 +148,19 @@ public class AvlTree extends BinaryTree {
         return newParent;
     }
 
+    // Left right rotate
     private BinNode leftRightRotate(BinNode node) {
         node.setLeft(rotateLeft(node.getLeft()));
         return rotateRight(node);
     }
 
+    // Right left rotate
     private BinNode rightLeftRotate(BinNode node) {
         node.setRight(rotateRight(node.getRight()));
         return rotateLeft(node);
     }
 
+    // Updates height
     public void updateHeight(BinNode node) {
         super.updateHeight(node);
     }

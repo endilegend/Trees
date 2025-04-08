@@ -88,7 +88,7 @@ public class BinaryTree {
      private void inorder(BinNode r) {
           if (r != null) {
                inorder(r.getLeft());
-               System.out.print(r.getData() + " ");
+               System.out.print(r.getData() + (r.getColor() == 1 ? "R " : "B "));
                inorder(r.getRight());
           }
      }
@@ -100,7 +100,7 @@ public class BinaryTree {
 
      private void preorder(BinNode r) {
           if (r != null) {
-               System.out.print(r.getData() + " ");
+               System.out.print(r.getData() + (r.getColor() == 1 ? "R " : "B "));
                preorder(r.getLeft());
                preorder(r.getRight());
           }
@@ -115,7 +115,7 @@ public class BinaryTree {
           if (r != null) {
                postorder(r.getLeft());
                postorder(r.getRight());
-               System.out.print(r.getData() + " ");
+               System.out.print(r.getData() + (r.getColor() == 1 ? "R " : "B "));
           }
      }
 

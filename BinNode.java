@@ -10,7 +10,7 @@ public class BinNode {
     private BinNode right;
     private BinNode parent;
     private int height = 1;
-    private int color = 0;
+    private int color = 1;
     private boolean isLeftChild;
 
     public BinNode() {
